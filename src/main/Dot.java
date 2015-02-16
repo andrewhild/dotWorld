@@ -22,26 +22,11 @@ public class Dot {
 			return true;
 	}
 	
-	public void move(int dir) {
-		switch (dir) {
-		case 1:
-			pos[1]-=step;
-			break;
-		case 2:
-			pos[1]+=step;
-			break;
-		case 3:
-			pos[0]+=step;
-			break;
-		case 4:
-			pos[0]-=step;
-			break;
-		default:
-			System.out.println("Your dot has lost its way.");
-		}
+	public void move(int dx, int dy) {
+		pos[0]+=step*dx;
+		pos[1]+=step*dy;
 		if(!isInBounds())
-			reset();
-		
+			reset();	
 	}
 	
 	private int[] reset() {

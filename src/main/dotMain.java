@@ -1,6 +1,4 @@
 package main;
-import java.awt.Canvas;
-import java.awt.Component;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 
@@ -14,16 +12,14 @@ public static void main(String[] args){
 	//Declare dot actor, assigning initial position at roughly center and step value
 	Dot hero = new Dot(new int[]{xDim/2,yDim/2}, 5, xDim, yDim);
 	//Instantiate new graphics object and then pass in dot actor and dimensions
-	dotWorld world = new dotWorld(hero, xDim, yDim);
+	dotWorld world = new dotWorld(hero);
 	world.setFocusable(true);
 	JFrame frame = new JFrame("Flamenco Overdrive presents DotWorld");
 	frame.getContentPane().add(world,BorderLayout.CENTER);
 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	frame.setSize(xDim,yDim);
-	//frame.pack();
+	frame.setResizable(false);
 	frame.setVisible(true);
-	
-	
 }
 
 

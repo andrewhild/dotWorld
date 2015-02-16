@@ -3,22 +3,15 @@ package main;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class dotWorld extends JPanel implements KeyListener{
 	private Dot hero;
-	private int xDim, yDim, dir;
+	private int dx, dy;
 	
-	public dotWorld(Dot dot, int x, int y) {
+	public dotWorld(Dot dot) {
 		hero = dot;
-		xDim = x;
-		yDim = y;
-		//JTextField typingArea = new JTextField(20);
-        //typingArea.addKeyListener(this);
-        //this.add(typingArea);
 		this.addKeyListener(this);
 		
 	}
@@ -31,17 +24,19 @@ public class dotWorld extends JPanel implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		dx = 0;
+		dy = 0;
 		int code = e.getKeyCode();
 		System.out.println(code);
 		if(code==KeyEvent.VK_UP)
-			dir = 1;
+			dy = -1;
 		else if(code==KeyEvent.VK_DOWN)
-			dir = 2;
+			dy = 1;
 		else if(code==KeyEvent.VK_RIGHT)
-			dir = 3;
+			dx = 1;
 		else if(code==KeyEvent.VK_LEFT)
-			dir = 4;
-		hero.move(dir);
+			dx = -1;
+		hero.move(dx,dy);
 		Graphics g = getGraphics();
 		paint(g);
 	}
